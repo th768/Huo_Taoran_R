@@ -1,0 +1,143 @@
+---
+title: "Huo_Taoran_R"
+author: "Taoran Huo"
+date: "October 6, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+#question 1
+#1. Create	the	vectors:	
+#a) (1,2,3,...,19,20)
+a <- c(1:(20)) #use column vector function
+#b) (20,19,...,2,1)
+b <- c((20):1) #use inversed column vector function
+#c) (1,2,3,...,19,20,19,18,...,2,1)	
+c <- c(c(1:(20)),c((20):1))
+#d) (4,	6,	3)	and	assign	it	to	the	name	tmp.	
+tem <- c(4, 6, 3) #use tem function
+#e) (4,6,3,	4,6,3,...,4,6,3)	where	there	are	10	occurrences	of	4.
+e <- rep(tem, times=10) #use reo and tem functions, times=10
+#f) (4,6,3,	4,6,3,...,4,6,3,4)	where	there	are	11	occurrences	of	4,	10	occurrences	of	6	and	10	occurrences	of	3.	
+f <- rep(tem, length.out = 31)
+#g) (4,4,...,4,	6,6,...,6,	3,3,...,3)	where	there	are	10	occurrences	of	4,	20	occurrences	of	6	and	30	occurrences	of	3.	
+g <- rep(tem, c(10, 10, 30))
+```
+
+```{r}
+#question 2
+#2. Create	a	vector	of	the	values	of	e^xcos(x)	at	x	=	3,3.1,3.2,...,5.9,6.	
+q2 <- exp(x)*cos(x) #use mathematical functions
+x <- seq(3, 6, by=.1) #use sequence function, the difference is 0.1
+```
+
+```{r}
+#question 3
+#3. Create	the	following	vectors:	
+#a) (0.1^3*0.2^1,0.1^6*0.2^4,0.1^9,0.2^7,...,0.1^36*0.2^34)	
+c31 <- seq(3, 36, by=3) #create 0.1's power sequence 
+c32 <- seq(1, 34, by=3) #create 0.2's power sequence
+q31 <- (0.1^c31)*(0.2^c32) #combine together
+#b)(2,2^2/2,2^3/3, ... ,2^25/25)
+c33 <- seq(1, 25, by=1) #create the numberator's power sequence
+c34 <- seq(1, 25, by=1) #create tge denominator's power sequence
+q32 <- 2^c33/c34 #combine
+```
+
+```{r}
+#question 4
+#4. Calculate	the	following:	
+#a) sum(i^3+4i^2),i=[10,100]
+i1 <- c(10:(100)) #create i1
+q41 <- sum(i1^3+4*i1^2) #use sum function
+#b) sum(2^i/i+3^i/i^2),i=[1,25]
+i2 <- c(1:(25)) #create i
+q42 <- sum(2^i2/i2+3^i2/i2^2) #use sum function
+```
+
+```{r}
+#question 5
+#5. Use	the	function	paste	to	create	the	following	character	vectors	of	length	30
+#a) ("label	1",	"label	2",	.....,	"label	30").	Note	that	there	is	a	single	space	between	label	and	the	number	following.	
+paste("lable", 1:30) #use paste function
+#b) ("fn1",	"fn2",	...,	"fn30").	In	this	case,	there	is	no	space	between	fn	and	the	number	following.	
+paste("fn",1:30,sep='') #use paste function
+```
+
+```{r}
+#question 6
+#6. Execute	the	following	lines	which	create	two	vectors	of	random	integers which	are	chosen	with	replacement	from	the	integers	0,	1,	.	.	.	,	999.
+#Both	vectors	have	length	250.	
+#set.seed(50) 
+#xVec <- sample(0:999, 250, replace=T) 
+#yVec <- sample(0:999, 250, replace=T)  
+#Suppose x = (x1,x2,...,xn) denotes the vector xVec and y = (y1,y2,...,yn) denotes the vector yVec. 
+
+xVec <- sample(0:999, 250, replace=T)
+yVec <- sample(0:999, 250, replace=T)
+
+#a) Create	the	vector
+a6 <- yVec[-1]-xVec[-length(xVec)] #[-1] can take off the first number
+#b)
+b6 <- sin(yVec[-length(yVec)])/cos(yVec[-1]) #y1 to yn-1, x2 to xn
+#c)
+c6 <- xVec[-c(249,250)]+2*xVec[-c(1,250)]-xVec[-c(1,2)] #x1+2x2-x3,...,xn-2+2xn-1-xn
+#d
+d6 <-sum(exp(-xVec[-1]))/(xVec[-length(xVec)]+10) #sum function
+```
+
+```{r}
+#question 7
+#7. This	question	uses	the	vectors	xVec	and	yVec created	in	the	previous	question	and	the	functions	sort,	order,	mean,	sqrt,	sum	and	abs.	
+#a) Pick	out	the	values	in	yVec	which	are	>	600.	
+a7 <- yVec[yVec>600] #pick up the numbers that are higher than 600
+#b) What	are	the	index	positions	in	yVec	of	the	values	which	are	>	600?
+b7 <- which(yVec>600) #indentity the position of the values that higher than 600
+#c) What	are	the	values	in	xVec	which	correspond	to	the	values	in	yVec	which	are	>	600?	(By	correspond,	we	mean	at	the	same	index	positions.
+c7 <- xVec[yVec>600] #find the correspond
+#d) Create	the	vector	(	|x1	???	????|1/2,	|x2	???	????|1/2,	.	.	.	,	|xn	???	????|1/2)	where	????	denotes	the	mean	of	the	vector	x	=	(x1,x2,...,xn).
+d7 <- sqrt(abs(xVec-mean(xVec))) #use mean and absolute function to create the sequence
+#e) How	many	values	in	yVec	are	within	200	of	the	maximum	value	of	the	terms	in	yVec?	
+e7 <- sum(yVec>max(yVec)-200) #find the sum of the numbers of values that meeted requirement
+#f) How	many numbers	in	xVec	are	divisible	by	2?	(Note	that	the	mod	operator	is	denoted	%%.)
+f7 <- sum(xVec%%2==0) #use %% and == to determine whether xVec is divisible
+#g) Sort	the	numbers	in	the	vector	xVec	in	the	order	of	increasing	values	in	yVec.
+g7 <- xVec[order(yVec)] #use order function
+#h) Pick	out	the	elements	in	yVec	at	index	positions	1,4,7,10,13,.	
+h7 <- yVec[c(T,F,F)] #T means true and F means false, which means that only pick up the first, fourth, seventh... number
+```
+
+```{r}
+#question 8
+#8. By	using	the	function	cumprod	or	otherwise,	calculate:	(1+2/3+2*4/3???5+2*4*6/3???5???7+???+2*4*...38/3*5*...39)
+1+sum(cumprod(seq(2,38,by=2)/seq(3,39,by=2))) #use cumprod function, by adding up the numbers gradually
+```
+
+
+
+
+
+
