@@ -1,3 +1,7 @@
+#Overall Comments: Good exercise! Your code is clear and efficient, I hope you can write more comments so that it will help you
+#when you refer back.
+
+
 #1. Print	to	the	console	all	methods	and	attributes	associates	with	a	dataframe.
 library("ggplot2") #install and require ggplot2
 attributes(diamonds) #use attributes function
