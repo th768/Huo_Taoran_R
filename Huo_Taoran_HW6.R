@@ -1,3 +1,6 @@
+#Overall Comments: Very good exercise! I see your understaning in the ggplot from both the code and explanations!
+
+
 #2. All	Groups:	Create	a	simple	scatter	plot	of	Weight ("Carat") and	Price using	Color
 #(the "Color" column	in	the	diamonds	dataframe)	as	a	facet. This	might	the	precursor	for	
 #developing	a	model	to predict	price	given	some	characteristic	like	weight. Notice	that	the	
